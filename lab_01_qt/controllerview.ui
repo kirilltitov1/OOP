@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ControllerView</class>
+ <widget class="QWidget" name="ControllerView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>294</width>
+    <height>385</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>131</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="rotateForm">
+    <property name="verticalSpacing">
+     <number>6</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="xLabel">
+      <property name="text">
+       <string>x</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="xField"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="yLabel">
+      <property name="text">
+       <string>y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="yField"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="zLabel">
+      <property name="text">
+       <string>z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="zField"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>0</y>
+     <width>141</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="scaleForm">
+    <property name="rowWrapPolicy">
+     <enum>QFormLayout::DontWrapRows</enum>
+    </property>
+    <property name="labelAlignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="formAlignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="dxLabel">
+      <property name="text">
+       <string>dx</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="dxField"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="dyLabel">
+      <property name="text">
+       <string>dy</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="dyField"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="dzLabel">
+      <property name="text">
+       <string>dz</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="dzField"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="rotateButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>116</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="moveButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Move</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="scaleButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>150</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Scale</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="kLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>k</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="kField">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadModelButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>200</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Load model</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clearButto">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>200</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
