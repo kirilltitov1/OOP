@@ -11,19 +11,28 @@
 
 #include <cstddef>
 #include <iostream>
+<<<<<<< HEAD
 
 
 #include "IContainer.h"
 #include "errors.h"
 
+=======
+#include "IContainer.h"
+>>>>>>> master
 template <typename T>
 class Set: public IContainer {
 
 public:
 	// Constructors
+<<<<<<< HEAD
 	Set();					// конструктор по умолчанию
 	Set(const Set<T> &set);	// конструктор копированя
 	Set(std::initializer_list<std::initializer_list<T>>);	// конструктор со списком инициализации
+=======
+	Set();
+//	explicit Set();
+>>>>>>> master
 
 	// Destructor
 	virtual ~Set();

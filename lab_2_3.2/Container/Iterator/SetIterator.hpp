@@ -5,6 +5,7 @@
 #ifndef LAB_2_3_2_SETITERATOR_HPP
 #define LAB_2_3_2_SETITERATOR_HPP
 
+<<<<<<< HEAD
 #include "IIterator.hpp"
 #include "SetItem.hpp"
 
@@ -17,4 +18,12 @@ public:
 	void inRange() override ;
 };
 
+=======
+
+class SetIterator {
+
+};
+
+
+>>>>>>> master
 #endif //LAB_2_3_2_SETITERATOR_HPP
