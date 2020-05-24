@@ -18,7 +18,6 @@ template<typename T>
 Set<T>::Set() {
 
 }
-<<<<<<< HEAD
 
 template<typename T>
 Set<T>::Set(const Set<T> &set) {
@@ -29,5 +28,4 @@ template<typename T>
 Set<T>::Set(std::initializer_list<std::initializer_list<T>>) {
 
 }
-=======
->>>>>>> master
+

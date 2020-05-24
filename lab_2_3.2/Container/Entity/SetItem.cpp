@@ -3,7 +3,6 @@
 //
 
 #include "SetItem.hpp"
-<<<<<<< HEAD
 
 
 template<typename T>
@@ -26,5 +25,3 @@ template<typename T>
 SetItem<T>::~SetItem() {
 
 }
-=======
->>>>>>> master

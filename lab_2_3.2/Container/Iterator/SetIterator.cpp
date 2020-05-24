@@ -3,7 +3,6 @@
 //
 
 #include "SetIterator.hpp"
-<<<<<<< HEAD
 
 template<typename T>
 void SetIterator<T>::first() {
@@ -24,5 +23,3 @@ template<typename T>
 void SetIterator<T>::inRange() {
 
 }
-=======
->>>>>>> master

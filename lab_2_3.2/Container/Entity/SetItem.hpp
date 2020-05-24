@@ -5,7 +5,6 @@
 #ifndef LAB_2_3_2_SETITEM_HPP
 #define LAB_2_3_2_SETITEM_HPP
 
-<<<<<<< HEAD
 #include "Set.hpp"
 
 template<typename T>
@@ -27,14 +26,5 @@ protected:
 //	friend class
 
 };
-=======
 
-
-class SetItem {
-
-};
-
-
-
->>>>>>> master
 #endif //LAB_2_3_2_SETITEM_HPP
