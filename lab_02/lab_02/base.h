@@ -1,8 +1,8 @@
 #ifndef BASE_H
 #define BASE_H
 
-class baseContainer
-{
+class baseContainer {
+
 public:
     //virtual size_t size() const     = 0;
     virtual void clear()            = 0;

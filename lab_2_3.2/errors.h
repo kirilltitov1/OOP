@@ -1,5 +1,14 @@
-#ifndef _ERRORS_H
-#define _ERRORS_H
+//
+//  errors.h
+//  lab_2_3
+//
+//  Created by Кирилл Титов on 23.05.2020.
+//  Copyright © 2020 Кирилл Титов. All rights reserved.
+//
+
+#ifndef errors_h
+#define errors_h
+
 #include <exception>
 
 class baseError : public std::exception {
@@ -35,4 +44,4 @@ public:
     }
 };
 
-#endif // _ERRORS_H
+#endif /* errors_h */

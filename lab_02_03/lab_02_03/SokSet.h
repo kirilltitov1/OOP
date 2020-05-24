@@ -1,4 +1,4 @@
-﻿#ifndef MY_SET_H_INCLUDED
+#ifndef MY_SET_H_INCLUDED
 #define MY_SET_H_INCLUDED
 
 #include "BaseContainer.h"
@@ -46,12 +46,11 @@ namespace sset {
 		template<typename T>
 		friend Set<T> operator |(const Set<T>& left, const Set<T>& right);	    // Побитовое ИЛИ
 
-
 		// Разность																	
 		Set<T>& set_difference(const Set<T>& s1);								// this = this without s1
 		Set<T>& operator -=(const Set<T>& s2);
 		Set<T>& operator /=(const Set<T>& s2);
-		template<typename T>                                                    // ???
+		template<typename T> // ???
 		friend Set<T> operator -(const Set<T>& left, const Set<T>& right);	    // Бинарный минус
 		template<typename T>
 		friend Set<T> operator /(const Set<T>& left, const Set<T>& right);      // Бинарное деление

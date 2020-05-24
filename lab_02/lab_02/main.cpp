@@ -173,8 +173,7 @@ int main()
         l4.reset(m, 777);
         cout << l4;
     }
-    catch(baseError& e)
-    {
+    catch(baseError& e) {
         cout << endl << endl << e.what() << endl << endl;
     }
 

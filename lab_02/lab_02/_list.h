@@ -5,28 +5,27 @@
 #include "_errors.h"
 #include "_iteratorlist.h"
 #include "_listitem.h"
-#include  "base.hpp"
+#include  "base.h"
 
 
 template <typename C> class iterator_list;
 template <typename C> class const_iterator_list;
-template <typename  C> class listItem;
+template <typename C> class listItem;
 
 
 template <typename C>
 class list : public baseContainer
 {
 public:
-    //Constructors
+    //MARK: - Constructors
     list();
-    explicit list(const list<C> &l);
-    list(list<C> &&l);
-    list(C* mass, int n);
+    explicit list(const list<C> &l); // конструктор копирования
+    list(list<C> &&l); // конструктор перемещеня
+    list(C* mass, int n); // констртуктор с пременными
     list(C data, size_t n = 1);
     explicit list(iterator_list<C>& first, iterator_list<C>& last);
 
-
-    //Destructor
+    //MARK: - Destructor
     virtual ~list();
 
     //Overload
@@ -42,10 +41,10 @@ public:
     bool operator ==(const list<C> &l) const;
     bool operator !=(const list<C>& l) const;
 
-    //Methods
+    //MARK: - Methods
     size_t size() const;
     virtual void clear();
-    virtual bool is_empty() const;//не переопределять
+    virtual bool is_empty() const final;	//не переопределять
     virtual size_t length() const;
 
     iterator_list<C>& begin();

@@ -1,6 +1,8 @@
 #ifndef BaseIter_h
 #define BaseIter_h
 
+#include <iostream>
+
 class BaseIter
 {
 public:
