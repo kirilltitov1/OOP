@@ -3,7 +3,8 @@
 
 #include <cstddef>
 
-namespace sset_base {
+namespace
+sset_base {
 	class base_container {
 	public:
 		explicit base_container();

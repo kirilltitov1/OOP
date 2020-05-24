@@ -31,7 +31,7 @@
 		EFE48896247826A1007E4357 /* _iteratorlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _iteratorlist.h; sourceTree = "<group>"; };
 		EFE48897247826A1007E4357 /* list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = list.hpp; sourceTree = "<group>"; };
 		EFE48898247826A1007E4357 /* listitem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = listitem.hpp; sourceTree = "<group>"; };
-		EFE48899247826A1007E4357 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
+		EFE48899247826A1007E4357 /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		EFE4889A247826A1007E4357 /* _listitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _listitem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,13 +66,13 @@
 			isa = PBXGroup;
 			children = (
 				EFE48895247826A1007E4357 /* _errors.h */,
-				EFE48896247826A1007E4357 /* _iteratorlist.h */,
+				EFE48899247826A1007E4357 /* base.h */,
 				EFE48893247826A1007E4357 /* _list.h */,
-				EFE4889A247826A1007E4357 /* _listitem.h */,
-				EFE48899247826A1007E4357 /* base.hpp */,
-				EFE48894247826A1007E4357 /* iteratorlist.hpp */,
 				EFE48897247826A1007E4357 /* list.hpp */,
+				EFE4889A247826A1007E4357 /* _listitem.h */,
 				EFE48898247826A1007E4357 /* listitem.hpp */,
+				EFE48896247826A1007E4357 /* _iteratorlist.h */,
+				EFE48894247826A1007E4357 /* iteratorlist.hpp */,
 				EF0193342476FF4F00A38ADF /* main.cpp */,
 			);
 			path = lab_02;
@@ -104,7 +104,7 @@
 		EF0193292476FF4F00A38ADF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Кирилл Титов";
 				TargetAttributes = {
 					EF0193302476FF4F00A38ADF = {
@@ -254,6 +254,7 @@
 		EF0193392476FF4F00A38ADF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9396A9KSNU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -264,6 +265,7 @@
 		EF01933A2476FF4F00A38ADF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9396A9KSNU;
 				ENABLE_HARDENED_RUNTIME = YES;

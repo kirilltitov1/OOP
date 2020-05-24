@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="077df1bc-5ea7-4921-89c9-bf3229e78f8f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/IDEFindNavigatorScopes.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3.xcodeproj/xcuserdata/kirilltitov.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3/Container/Container.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3/Container/Container.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3/Container/IContainer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3/errors.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab_2_3/lab_2_3/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/xcuserdata/kirilltitov.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02.xcodeproj/xcuserdata/kirilltitov.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/_errors.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/_errors.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/_iteratorlist.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/_iteratorlist.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/_list.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/_list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/base.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/base.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/iteratorlist.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/iteratorlist.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/list.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/list.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/listitem.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/listitem.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02/lab_02/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02/lab_02/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02_03/lab_02_03.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02_03/lab_02_03.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02_03/lab_02_03.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02_03/lab_02_03.xcodeproj/project.xcworkspace/xcuserdata/kirilltitov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02_03/lab_02_03/BaseIter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02_03/lab_02_03/BaseIter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_02_03/lab_02_03/SokSet.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_02_03/lab_02_03/SokSet.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1cJz0SqkDoA59s5AqkX4wdhOkgv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="077df1bc-5ea7-4921-89c9-bf3229e78f8f" name="Default Changelist" comment="" />
+      <created>1590261261012</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590261261012</updated>
+      <workItem from="1590261262308" duration="1000" />
+    </task>
+    <servers />
+  </component>
+</project>

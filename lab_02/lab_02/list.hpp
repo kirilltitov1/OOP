@@ -3,7 +3,6 @@
 #include "_list.h"
 #include <stdlib.h>
 #include <assert.h>
-//#include <iostream>
 //#define DEBUG
 
 namespace compfunc {

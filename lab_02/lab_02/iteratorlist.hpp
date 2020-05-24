@@ -3,49 +3,42 @@
 #include "_iteratorlist.h"
 
 template <typename C>
-iterator_list<C>::iterator_list(const list<C>& l)
-{
+iterator_list<C>::iterator_list(const list<C>& l) {
     this->_list = &l;
     this->_current = l.head;
 }
 
 template <typename C>
-iterator_list<C>::iterator_list(const iterator_list<C>& it)
-{
+iterator_list<C>::iterator_list(const iterator_list<C>& it) {
     this->_list = it._list;
     this->_current = it._current;
 }
 
 template <typename C>
-iterator_list<C>::~iterator_list()
-{
+iterator_list<C>::~iterator_list() {
     this->_list = nullptr;
     this->_current = nullptr;
 }
 
 template <typename C>
-iterator_list<C>& iterator_list<C>::operator =(const iterator_list<C>& it)
-{
+iterator_list<C>& iterator_list<C>::operator =(const iterator_list<C>& it) {
     this->_list = it._list;
     this->_current = it._current;
     return *this;
 }
 
 template <typename C>
-void iterator_list<C>::first()
-{
+void iterator_list<C>::first() {
     this->_current = this->_list->head;
 }
 
 template <typename C>
-void iterator_list<C>::last()
-{
+void iterator_list<C>::last() {
     this->_current = this->_list->tail;
 }
 
 template <typename C>
-void iterator_list<C>::next()
-{
+void iterator_list<C>::next() {
     if(!this->inRange())
        throw rangeError();
 
@@ -53,15 +46,13 @@ void iterator_list<C>::next()
 }
 
 template <typename C>
-bool iterator_list<C>::inRange()
-{
+bool iterator_list<C>::inRange() {
     return !(this->_current == nullptr);
 }
 
 
 template <typename C>
-iterator_list<C>& iterator_list<C>::operator ++()
-{
+iterator_list<C>& iterator_list<C>::operator ++() {
     if (!this->inRange())
         throw rangeError();
     this->next();
@@ -70,8 +61,7 @@ iterator_list<C>& iterator_list<C>::operator ++()
 }
 
 template <typename C>
-iterator_list<C> iterator_list<C>::operator ++(int)
-{
+iterator_list<C> iterator_list<C>::operator ++(int) {
     if (!this->inRange())
         throw rangeError();
 
@@ -83,8 +73,7 @@ iterator_list<C> iterator_list<C>::operator ++(int)
 
 
 template <typename C>
-const C iterator_list<C>::current()
-{
+const C iterator_list<C>::current() {
     if(!this->inRange())
         throw emptyError();
 
@@ -92,22 +81,18 @@ const C iterator_list<C>::current()
 }
 
 template <typename C>
-listItem<C> &iterator_list<C>::operator *()
-{
+listItem<C> &iterator_list<C>::operator *() {
     return *this->_current;
 }
 
 template <typename C>
-listItem<C>* iterator_list<C>::operator ->()
-{
+listItem<C>* iterator_list<C>::operator ->() {
     return this->_current;
 }
 
 template <typename C>
-iterator_list<C>& iterator_list<C>::operator +=(size_t n)
-{
-    while(n--)
-    {
+iterator_list<C>& iterator_list<C>::operator +=(size_t n) {
+    while(n--) {
         //if(!this->inRange())
             //throw rangeError();
         this->_current = this->_current->next;
@@ -117,8 +102,7 @@ iterator_list<C>& iterator_list<C>::operator +=(size_t n)
 }
 
 template <typename C>
-iterator_list<C> iterator_list<C>::operator +(size_t n) const
-{
+iterator_list<C> iterator_list<C>::operator +(size_t n) const {
     iterator_list<C> it(*this);
 
     it += n;
@@ -127,8 +111,7 @@ iterator_list<C> iterator_list<C>::operator +(size_t n) const
 }
 
 template <typename C>
-bool iterator_list<C>::operator != (const iterator_list<C>& it) const
-{
+bool iterator_list<C>::operator != (const iterator_list<C>& it) const {
     if (this->_list != it._list)
         throw  cmpIterError();
 
@@ -145,8 +128,7 @@ bool iterator_list<C>::operator == (const iterator_list<C>& it) const
 }
 
 template <typename C>
-bool iterator_list<C>::operator < (const iterator_list<C>& it) const
-{
+bool iterator_list<C>::operator < (const iterator_list<C>& it) const {
     if (this->_list != it._list)
        throw  cmpIterError();
 
@@ -154,8 +136,7 @@ bool iterator_list<C>::operator < (const iterator_list<C>& it) const
 }
 
 template <typename C>
-bool iterator_list<C>::operator > (const iterator_list<C>& it) const
-{
+bool iterator_list<C>::operator > (const iterator_list<C>& it) const {
     if (this->_list != it._list)
         throw  cmpIterError();
 
@@ -163,8 +144,7 @@ bool iterator_list<C>::operator > (const iterator_list<C>& it) const
 }
 
 template <typename C>
-bool iterator_list<C>::operator <= (const iterator_list<C>& it) const
-{
+bool iterator_list<C>::operator <= (const iterator_list<C>& it) const {
     if (this->_list != it._list)
         throw  cmpIterError();
 
@@ -172,8 +152,7 @@ bool iterator_list<C>::operator <= (const iterator_list<C>& it) const
 }
 
 template <typename C>
-bool iterator_list<C>::operator >= (const iterator_list<C>& it) const
-{
+bool iterator_list<C>::operator >= (const iterator_list<C>& it) const {
     if (this->_list != it._list)
        throw  cmpIterError();
 
@@ -183,36 +162,31 @@ bool iterator_list<C>::operator >= (const iterator_list<C>& it) const
 //––––––––––––––––––––––––––––––––––––––––
 
 template <typename C>
-const_iterator_list<C>::const_iterator_list(const list<C>& l)
-{
+const_iterator_list<C>::const_iterator_list(const list<C>& l) {
     this->_list = &l;
     this->_current = l.head;
 }
 
 template <typename C>
-const_iterator_list<C>::const_iterator_list(const const_iterator_list<C>& it)
-{
+const_iterator_list<C>::const_iterator_list(const const_iterator_list<C>& it) {
     this->_list = it._list;
     this->_current = it._current;
 }
 
 template <typename C>
-const_iterator_list<C>::~const_iterator_list()
-{
+const_iterator_list<C>::~const_iterator_list() {
     this->_list = nullptr;
     this->_current = nullptr;
 }
 
 
 template <typename C>
-void const_iterator_list<C>::first()
-{
+void const_iterator_list<C>::first() {
     this->_current = this->_list->get_head();
 }
 
 template <typename C>
-void const_iterator_list<C>::last()
-{
+void const_iterator_list<C>::last() {
     if(this->_list->get_head() == nullptr)
         throw emptyError();
 
@@ -220,8 +194,7 @@ void const_iterator_list<C>::last()
 }
 
 template <typename C>
-void const_iterator_list<C>::next()
-{
+void const_iterator_list<C>::next() {
     if(!this->inRange())
        throw rangeError();
 
@@ -229,15 +202,13 @@ void const_iterator_list<C>::next()
 }
 
 template <typename C>
-bool const_iterator_list<C>::inRange()
-{
+bool const_iterator_list<C>::inRange() {
     return this->_current == nullptr;
 }
 
 
 template <typename C>
-const C& const_iterator_list<C>::current() const
-{
+const C& const_iterator_list<C>::current() const {
     if(!this->inRange())
         throw emptyError();
 
@@ -245,8 +216,7 @@ const C& const_iterator_list<C>::current() const
 }
 
 template <typename C>
-const listItem<C> &const_iterator_list<C>::operator *()
-{
+const listItem<C> &const_iterator_list<C>::operator *() {
     return *this->_current;
 }
 

@@ -61,8 +61,7 @@ public:
 
 
 template <class C>
-class const_iterator_list : public iteratorBase< listItem<C> >
-{
+class const_iterator_list : public iteratorBase< listItem<C> > {
 private:
     const list<C>* _list;
 public:
@@ -84,7 +83,9 @@ public:
     bool operator <  (const const_iterator_list<C>& it) const;
     bool operator >  (const const_iterator_list<C>& it) const;
     bool operator <= (const const_iterator_list<C>& it) const;
-    bool operator >= (const const_iterator_list<C>& it) const;
+	cmpIterError extracted() const;
+	
+	bool operator >= (const const_iterator_list<C>& it) const;
 
     int difference(const const_iterator_list<C> &it);
 
