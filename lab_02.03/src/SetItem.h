@@ -5,7 +5,11 @@
 #ifndef LAB_2_3_2_SETITEM_HPP
 #define LAB_2_3_2_SETITEM_HPP
 
-#include "Set.hpp"
+#include <cstddef>
+#include <iostream>
+#include <memory>
+
+#include "Set.h"
 
 template<typename T> class Set;
 template<typename T> class SetIterator;
@@ -14,24 +18,26 @@ template<typename T>
 class SetItem {
 public:
 
-	// Constructor
+	//MARK:- Constructor
 	SetItem();
 	explicit SetItem(T data);
 	SetItem(const SetItem&);
 
-	// Destructor
+	//MARK:- Destructor
 	virtual ~SetItem();
 
-	// Methods
+	//MARK:- Methods
 	T getData() const;
+	T &getPtrData() const;
+	
 
-	// Operators
 	bool operator ==(const SetItem<T>& elem) const;
-	bool operator >=(const SetItem<T>& l) const;
-	bool operator <=(const SetItem<T>& l) const;
-	bool operator !=(const SetItem<T>& l) const;
-	bool operator >(const SetItem<T>& l) const;
-	bool operator <(const SetItem<T>& l) const;
+	bool operator >=(const SetItem<T>& elem) const;
+	bool operator <=(const SetItem<T>& elem) const;
+	bool operator !=(const SetItem<T>& elem) const;
+	bool operator  >(const SetItem<T>& elem) const;
+	bool operator  <(const SetItem<T>& elem) const;
+//	std::iostream& operator<<(std::ostream& os, const SetItem<T> &item);
 
 protected:
 	T data;

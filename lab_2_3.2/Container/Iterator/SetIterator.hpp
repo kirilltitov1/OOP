@@ -8,6 +8,11 @@
 #include "IIterator.hpp"
 #include "SetItem.hpp"
 
+
+template<typename T> class SetItem;
+template<typename T> class Set;
+
+
 template<typename T>
 class SetIterator: public IIterator<SetItem<T>> {
 public:

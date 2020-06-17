@@ -11,23 +11,34 @@
 
 #include <cstddef>
 #include <iostream>
+#include <Container/Entity/SetItem.hpp>
 
 
 #include "IContainer.h"
+#include "SetItem.hpp"
+#include "SetIterator.hpp"
 #include "errors.h"
 
-#include "IContainer.h"
+template<typename T> class SetItem;
+template<typename T> class SetIterator;
+
 template <typename T>
 class Set: public IContainer {
 
 public:
 	// Constructors
 	Set();					// конструктор по умолчанию
+	Set(T );
 	Set(const Set<T> &set);	// конструктор копированя
 	Set(std::initializer_list<std::initializer_list<T>>);	// конструктор со списком инициализации
 
 	// Destructor
 	virtual ~Set();
+
+	// Methods
+	void clear();
+	bool isEmpty();
+	size_t size();
 
 };
 
