@@ -19,7 +19,10 @@ template<typename T> class Set;
 template<typename T>
 class SetIterator: public IIterator<T>, public std::iterator<std::input_iterator_tag, T> {
 public:
-	SetIterator<T> next() override;
+//	SetIterator<T> &next() override;
+	
+private:
+//	curPtr
 //	void inRange() override;
 };
 

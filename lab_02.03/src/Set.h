@@ -21,27 +21,30 @@
 #include "errors.h"
 
 template<typename T> class SetIterator;
+template<typename T_> class SetIterator;
 
 template <typename T>
 class Set: public IContainer {
 private:
-	std::shared_ptr<SetItem<T>> ptr {nullptr};
+	std::shared_ptr<SetItem<T> > ptr {nullptr};
 
+protected:
+	size_t size;
+	
 public:
 //MARK:- Constructors
-	Set();								// конструктор по умолчанию
+	Set();									// конструктор по умолчанию
 
 	//	Set(size );
-	template<typename T_>
-	explicit Set(T_ elem, size_t count);			// конструктор с переменными
+	Set(const T *notUnicueArray, size_t count);	// конструктор с переменными
 	
-	Set(const Set<T> &set);				// конструктор копирования
+	Set(const Set<T> &set);					// конструктор копирования
 	
 	template<typename T_>
-	Set(const Set<T> &&set) noexcept;	// конструктор перемещения
+	Set(const Set<T> &&set) noexcept;		// конструктор перемещения
 	
 	template<typename Iterator>
-	Set(Iterator first, Iterator last);
+	Set(Iterator begin, Iterator end);
 	
 	template<typename T_>
 	Set(std::initializer_list<std::initializer_list<T_>>);	// конструктор со списком инициализации
@@ -53,17 +56,22 @@ public:
 //MARK:- Methods
 	void clear();
 	bool isEmpty();
-	size_t size();
+	size_t getSize();
 	Set<T> initSet(T data);
 	
-	Set<T> &append();
-	Set<T> &addSet();
+	Set<T> operator+(const T &data) const;
+	Set<T> &add(const T &data);
 	
-	SetIterator<T> first();
-	SetIterator<T> last();
+	Set<T> operator-(const T &data) const;
+	Set<T> &remove(const T &data) const;
+	
+	Set<T> &append(const T data);
+	Set<T> &addSet(const Set &SetToAdd);
+	
+	SetIterator<T> begin();
+	SetIterator<T> end();
 	
 	void allocMemory(size_t size);
-
 };
 
 #endif /* Container_hpp */

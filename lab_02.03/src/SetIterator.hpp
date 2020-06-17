@@ -17,7 +17,7 @@ SetIterator<T> &SetIterator<T>::last() {
 
 template<typename T>
 SetIterator<T> &SetIterator<T>::next() {
-
+	return Set
 }
 
 template<typename T>

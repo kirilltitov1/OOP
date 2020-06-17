@@ -22,6 +22,7 @@ public:
 	SetItem();
 	explicit SetItem(T data);
 	SetItem(const SetItem&);
+	std::shared_ptr<SetItem<T>> &initSetItem(T data);
 
 	//MARK:- Destructor
 	virtual ~SetItem();
@@ -30,6 +31,9 @@ public:
 	T getData() const;
 	T &getPtrData() const;
 	
+	void setData(T data);
+	
+	SetItem<T> &next();
 
 	bool operator ==(const SetItem<T>& elem) const;
 	bool operator >=(const SetItem<T>& elem) const;
@@ -42,8 +46,8 @@ public:
 protected:
 	T data;
 
-	friend class Set<T>;
-	friend class SetIterator<T>;
+//	friend class Set<T>;
+//	friend class SetIterator<T>;
 
 };
 

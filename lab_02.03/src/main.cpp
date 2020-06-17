@@ -24,11 +24,12 @@ int main(int argc, const char * argv[]) {
 		Set<double> set1;
 		
 		std::cout << "🔘 Конструктор с параметрами 🔘\n";
-		Set<double> set2(9, 5);
-		
+		int array[] = {1, 2, 3};
+//		array
+		Set<int> set2(array, 3);
+	
 	} catch (MemError &error) {
 		errorFlag = true;
-
 	}
 	std::cout << "Тестирование конструкторов: ";
 	if (errorFlag) {

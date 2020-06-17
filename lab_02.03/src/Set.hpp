@@ -10,19 +10,16 @@
 #include "SetItem.hpp"
 
 template<typename T>
-Set<T>::Set() {
-	
-	size_t size = 0;
-	allocMemory(size);
-
+Set<T>::Set(): size(0) {
 	std::cout << "Конструктор по умолчанию класса Set\n" ;
 }
 
 template<typename T>
-template<typename T_>
-Set<T>::Set(T_ elem, size_t count) {
+Set<T>::Set(const T* notUnicueArray, size_t count) {
 	allocMemory(count);
-	*(ptr.get()+0) = SetItem<T>(0);
+	ptr.get()[0] = SetItem<T>(0);
+	ptr.get()[1] = SetItem<T>(1);
+	ptr.get()[2] = SetItem<T>(2);
 //	*(ptr.get()+1) = 1;
 //	*(ptr.get()+2) = 2;
 }
@@ -65,17 +62,17 @@ bool Set<T>::isEmpty() {
 }
 
 template<typename T>
-size_t Set<T>::size() {
+size_t Set<T>::getSize() {
 	
 }
 
 template<typename T>
-SetIterator<T> Set<T>::first() {
+SetIterator<T> Set<T>::begin() {
 	
 }
 
 template<typename T>
-SetIterator<T> Set<T>::last() {
+SetIterator<T> Set<T>::end() {
 	
 }
 
@@ -99,11 +96,23 @@ void Set<T>::allocMemory(size_t size) {
 
 //MARK:- Methods
 template<typename T>
-Set<T> &Set<T>::append() {
+Set<T> &Set<T>::append(const T data) {
 	
 }
 
 template<typename T>
-Set<T> &Set<T>::addSet() {
+Set<T> &Set<T>::add(const T &data) {
+	Set<T> newSet(*this);
+    newSet.append(data);
+    return newSet;
+}
+
+template<typename T>
+Set<T> &Set<T>::addSet(const Set &SetToAdd) {
+	
+}
+
+template<typename T>
+Set<T> &Set<T>::remove(const T &data) const {
 	
 }

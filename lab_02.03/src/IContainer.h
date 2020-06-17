@@ -12,9 +12,9 @@
 class IContainer {
 	
 public:
-	virtual void clear()	= 0;
-	virtual bool isEmpty()	= 0;
-	virtual size_t size()	= 0;
+	virtual void clear() = 0;
+	virtual bool isEmpty() = 0;
+	virtual size_t getSize() = 0;
 };
 
 #endif /* IContainer_h */

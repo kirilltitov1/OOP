@@ -12,17 +12,29 @@ SetItem<T>::SetItem() {
 
 template<typename T>
 SetItem<T>::SetItem(const SetItem &data) {
-	return this->data = data;
+	this->data = data;
 }
 
 template<typename T>
 SetItem<T>::SetItem(T data) {
-	return this->data = data;
+	this->data = data;
+}
+
+template<typename T>
+std::shared_ptr<SetItem<T>> &SetItem<T>::initSetItem(T data) {
+	std::shared_ptr<SetItem<T>> setItem;
+    setItem = std::make_shared<SetItem<T>>();
+	
+	if (!setItem) {
+		throw MemError();
+	}
+	setItem->setData(data);
+	return setItem;
 }
 
 template<typename T>
 SetItem<T>::~SetItem() {
-	std::cout << "SetItem destrutor";
+	std::cout << "SetItem destrutor\n";
 }
 
 template<typename T>
@@ -31,6 +43,10 @@ T SetItem<T>::getData() const {
 	return nullptr;
 }
 
+template<typename T>
+void SetItem<T>::setData(T data) {
+	this->data = data;
+}
 
 template<typename T>
 bool SetItem<T>::operator==(const SetItem<T> &elem) const {
