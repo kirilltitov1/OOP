@@ -14,118 +14,10 @@
             filePath = "src/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "main(argc, argv)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Set.hpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "~Set()"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 214cd58d3541aff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;int&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "21">
-               </Location>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 3d3eedf9b9a8cb2c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;double&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "21">
-               </Location>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 3d3eedf9b9a8cb2c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;double&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 3d3eedf9b9a8cb2c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;double&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "62">
-               </Location>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 214cd58d3541aff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;int&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "56F9E778-22AB-43D2-9C60-C9432D21D9FF - 214cd58d3541aff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Set&lt;int&gt;::~Set()"
-                  moduleName = "lab_02.03"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kirilltitov/Documents/BMSTU/4sem/OOP/lab_02.03/src/Set.hpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "62">
-               </Location>
-            </Locations>
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,26 +30,26 @@
             filePath = "src/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "main(argc, argv)"
-            landmarkType = "9">
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6314648-C523-4CDB-BB82-82BEFE6DD905"
+            uuid = "5495CCD4-7E6F-4EDE-B759-005A1B70CAFA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/Set.hpp"
+            filePath = "src/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "Set(notUnicueArray, count)"
-            landmarkType = "9">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

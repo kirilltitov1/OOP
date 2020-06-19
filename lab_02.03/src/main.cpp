@@ -22,7 +22,6 @@ int main(int argc, const char * argv[]) {
 	try {
 		std::cout << "🔘 Конструктор по умолчанию 🔘\n";
 		Set<double> set1;
-		
 		std::cout << "🔘 Конструктор с параметрами 🔘\n";
 		int array[] = {1, 2, 3};
 //		array

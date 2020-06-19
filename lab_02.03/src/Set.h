@@ -14,14 +14,12 @@
 #include <iostream>
 #include <memory>
 
-
 #include "IContainer.h"
 #include "SetItem.h"
 #include "SetIterator.h"
 #include "errors.h"
 
 template<typename T> class SetIterator;
-template<typename T_> class SetIterator;
 
 template <typename T>
 class Set: public IContainer {
@@ -37,6 +35,8 @@ public:
 
 	//	Set(size );
 	Set(const T *notUnicueArray, size_t count);	// конструктор с переменными
+	
+	Set(std::shared_ptr<SetItem<T>> &newPtr);
 	
 	Set(const Set<T> &set);					// конструктор копирования
 	
@@ -57,7 +57,7 @@ public:
 	void clear();
 	bool isEmpty();
 	size_t getSize();
-	Set<T> initSet(T data);
+	Set<T> initSet(T &data);
 	
 	Set<T> operator+(const T &data) const;
 	Set<T> &add(const T &data);
@@ -65,11 +65,20 @@ public:
 	Set<T> operator-(const T &data) const;
 	Set<T> &remove(const T &data) const;
 	
+	Set<T> &operator+=(const T &data);
 	Set<T> &append(const T data);
 	Set<T> &addSet(const Set &SetToAdd);
 	
+	Set<T> &operator-=(const T &data);
+	
+	template<typename T_>
+	bool isUnique(SetItem<T_>);
+	
 	SetIterator<T> begin();
 	SetIterator<T> end();
+	
+	SetIterator<T> c_begin();
+	SetIterator<T> c_end();
 	
 	void allocMemory(size_t size);
 };

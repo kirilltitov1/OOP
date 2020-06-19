@@ -19,13 +19,12 @@ class SetItem {
 public:
 
 	//MARK:- Constructor
-	SetItem();
+	SetItem() = default;
 	explicit SetItem(T data);
-	SetItem(const SetItem&);
 	std::shared_ptr<SetItem<T>> &initSetItem(T data);
 
 	//MARK:- Destructor
-	virtual ~SetItem();
+	virtual ~SetItem() = default;
 
 	//MARK:- Methods
 	T getData() const;
