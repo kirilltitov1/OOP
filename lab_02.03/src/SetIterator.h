@@ -15,7 +15,7 @@
 
 template<typename T> class Set;
 
-
+//MARK: - SetIteratorBase
 template<typename T>
 class SetIteratorBase: public IIterator<T>, public std::iterator<std::input_iterator_tag, T> {
 private:
@@ -24,7 +24,7 @@ private:
 public:
 	SetIteratorBase();
     SetIteratorBase(const SetIteratorBase<T> &setIterator);
-    SetIteratorBase(const std::shared_ptr<SetItem<T>> itemb);
+    SetIteratorBase(const std::shared_ptr<SetItem<T>> item);
 
     virtual ~SetIteratorBase() = default;
 
@@ -36,10 +36,10 @@ public:
     bool operator==(const SetIteratorBase<T> &setIterator) const;
     bool operator!=(const SetIteratorBase<T> &setIterator) const;
 
-	bool checkRange() const;
 	SetIteratorBase<T> &next();
 };
 
+//MARK: - SetIterator
 template<typename T>
 class SetIterator: public SetIteratorBase<T> {
 
@@ -50,10 +50,8 @@ public:
 
 	SetIterator<T> &operator=(const SetIterator<T> &setIterator);
 
-	T &getCur();
-	T &getNext();
-	const T &getCur() const;
-	const T &getNext() const;
+	T &next();
+	const T &next() const;
 
 	T &operator*();
 	T *operator->();
@@ -63,19 +61,19 @@ public:
 	operator bool() const;
 };
 
+//MARK: - ConstSetIterator
 template<typename T>
 class ConstSetIterator: public SetIteratorBase<T> {
-	
-	
+
 public:
 	ConstSetIterator();
-	ConstSetIterator(const ConstSetIterator<T> &setItem);
+	ConstSetIterator(const ConstSetIterator<T> &setIteratoc);
 	ConstSetIterator(std::shared_ptr<SetItem<T>> item);
 
-	ConstSetIterator<T> &operator=(const ConstSetIterator<T> &setItem);
+	ConstSetIterator<T> &operator=(const ConstSetIterator<T> &setIterator);
 
-	const T &getCur() const;
-	const T &getNext() const;
+	T &next();
+	const T &next() const;
 
 	const T &operator*() const;
 	const T *operator->() const;

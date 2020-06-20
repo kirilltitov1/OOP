@@ -7,7 +7,7 @@
 //
 
 #include "Set.h"
-#include "SetItem.hpp"
+#include "SetItem.h"
 
 //MARK:- Constructors
 template<typename T>//+
@@ -91,21 +91,11 @@ SetIterator<T> Set<T>::end() {
 
 template<typename T>//+
 ConstSetIterator<T> Set<T>::begin() const {
-	this->c_begin();
-}
-
-template<typename T>//+
-ConstSetIterator<T> Set<T>::end() const {
-	this->c_end();
-}
-
-template<typename T>//+
-ConstSetIterator<T> Set<T>::c_begin() const {
 	return SetIterator<T>(0);
 }
 
 template<typename T>//+
-ConstSetIterator<T> Set<T>::c_end() const {
+ConstSetIterator<T> Set<T>::end() const {
 	return SetIterator<T>(getSize());
 }
 

@@ -23,6 +23,10 @@ template<typename T> class SetIterator;
 
 template <typename T>
 class Set: public IContainer {
+private:
+	std::shared_ptr<SetItem<T> > ptr {nullptr};
+	
+	void allocMemory(size_t size);
 
 protected:
 	size_t size;
@@ -38,7 +42,6 @@ public:
 	
 	Set(const Set<T> &set);					// конструктор копирования
 	
-	template<typename T_>
 	Set(const Set<T> &&set) noexcept;		// конструктор перемещения
 	
 	template<typename Iterator>
@@ -78,13 +81,6 @@ public:
 	
 	ConstSetIterator<T> begin() const;
 	ConstSetIterator<T> end() const;
-private:
-std::shared_ptr<SetItem<T> > ptr {nullptr};
-
-	ConstSetIterator<T> c_begin() const;
-	ConstSetIterator<T> c_end() const;
-	
-	void allocMemory(size_t size);
 };
 
 #endif /* Container_hpp */

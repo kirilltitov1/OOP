@@ -16,12 +16,14 @@ template<typename T> class SetIterator;
 
 template<typename T>
 class SetItem {
+protected:
+	T data;
 public:
 
 	//MARK:- Constructor
 	SetItem() = default;
 	explicit SetItem(T data);
-	std::shared_ptr<SetItem<T>> &initSetItem(T data);
+	SetItem<T> &initSetItem(T data);
 
 	//MARK:- Destructor
 	virtual ~SetItem() = default;
@@ -31,8 +33,6 @@ public:
 	T &getPtrData() const;
 	
 	void setData(T data);
-	
-	SetItem<T> &next();
 
 	bool inline isEqual(const SetItem<T>& elem) const;
 	bool operator ==(const SetItem<T>& elem) const;
@@ -42,9 +42,6 @@ public:
 	bool operator  >(const SetItem<T>& elem) const;
 	bool operator  <(const SetItem<T>& elem) const;
 //	std::iostream& operator<<(std::ostream& os, const SetItem<T> &item);
-
-protected:
-	T data;
 
 //	friend class Set<T>;
 //	friend class SetIterator<T>;

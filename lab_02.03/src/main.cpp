@@ -8,6 +8,8 @@
 
 #include "errors.h"
 #include "Set.hpp"
+#include "SetItem.hpp"
+#include "SetIterator.hpp"
 
 
 int main(int argc, const char * argv[]) {
