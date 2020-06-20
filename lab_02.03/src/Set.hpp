@@ -48,7 +48,6 @@ Set<T>::Set(std::initializer_list<std::initializer_list<T_>> array) {
 }
 
 template<typename T>//+
-template<typename T_>
 Set<T>::Set(const Set<T> &&set) noexcept {
 	this->size = set->size;
 	this->ptr.reset(set);
@@ -116,50 +115,50 @@ void Set<T>::allocMemory(size_t size) {
 }
 
 template<typename T>//+
-Set<T> &Set<T>::operator+=(const T &data) {
-	return *this->add(data);
+Set<T> &Set<T>::operator+=(const T &elem) {
+	return *this->add(elem);
 }
 
 template<typename T>//+
-Set<T> &Set<T>::append(const T data) {
+Set<T> &Set<T>::append(const T elem) {
 	size_t size = this->ptr.use_count();
 	std::shared_ptr<SetItem<T>> newPtr(new SetItem<T>[ptr.use_count()+1], std::default_delete<SetItem<T>[]>());
 	for (int i = 0; i < ptr.use_count(); i++) {
 		newPtr.get()[i] = ptr.get()[i];
 	}
-	newPtr.get()[size-1] = SetItem<T>(data);
+	newPtr.get()[size-1] = SetItem<T>(elem);
 	this->ptr = newPtr;
 	return *this;
 }
 
 template<typename T>//+
-Set<T> &Set<T>::add(const T &data) {
+Set<T> &Set<T>::add(const T &elem) const {
 	Set<T> newSet(*this);
-    newSet.append(data);
+    newSet.append(elem);
     return newSet;
 }
 
 template<typename T>//+
-Set<T> Set<T>::operator+(const T &data) const {
-	return *this->add(data);
+Set<T> Set<T>::operator+(const T &elem) const {
+	return *this->add(elem);
 }
 
 template<typename T>//+
 Set<T> &Set<T>::addSet(const Set &SetToAdd) {
 	for (const auto item: SetToAdd) {
 		if (isUnique(item)) {
-			this->append(item.data);
+			this->append(item.elem);
 		}
 	}
 	return *this;
 }
 
 template<typename T>//+
-Set<T> &Set<T>::remove(const T &data) const {
+Set<T> &Set<T>::remove(const T &elem) const {
 	bool flag = false;
 	size_t pos;
 	for (size_t i = 0; i < size; i++) {
-		if (this->ptr.get()[i] == data) {
+		if (this->ptr.get()[i] == elem) {
 			flag = true;
 			pos = 0;
 		}
@@ -176,14 +175,14 @@ Set<T> &Set<T>::remove(const T &data) const {
 }
 
 template<typename T>//+
-Set<T> Set<T>::operator-(const T &data) const {
-	return *this->remove(data);
+Set<T> Set<T>::operator-(const T &elem) const {
+	return *this->remove(elem);
 }
 
 template<typename T>//+
-Set<T> Set<T>::initSet(T &data) {
+Set<T> Set<T>::initSet(T &elem) {
 	Set<T> set;
-	set.add(data);
+	set.add(elem);
 	return *this;
 }
 

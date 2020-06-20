@@ -58,20 +58,20 @@ public:
 	void inline clear();
 	bool inline isEmpty();
 	size_t getSize();
-	Set<T> initSet(T &data);
+	Set<T> initSet(T &elem);
 	
-	Set<T> operator+(const T &data) const;
-	Set<T> &add(const T &data);
+	Set<T> operator+(const T &elem) const;
+	Set<T> &add(const T &elem) const;
 	
-	Set<T> operator-(const T &data) const;
-	Set<T> &remove(const T &data) const;
+	Set<T> operator-(const T &elem) const;
+	Set<T> &remove(const T &elem) const;
 	
-	Set<T> &operator+=(const T &data);
-	Set<T> &append(const T data);
+	Set<T> &operator+=(const T &elem);
+	Set<T> &append(const T elem);
 	Set<T> &operator+=(const Set<T> &setToAdd);
 	Set<T> &addSet(const Set<T> &SetToAdd);
 	
-	Set<T> &operator-=(const T &data);
+	Set<T> &operator-=(const T &elem);
 	
 	template<typename T_>
 	bool isUnique(SetItem<T_>);
