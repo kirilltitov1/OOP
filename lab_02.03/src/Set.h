@@ -23,8 +23,6 @@ template<typename T> class SetIterator;
 
 template <typename T>
 class Set: public IContainer {
-private:
-	std::shared_ptr<SetItem<T> > ptr {nullptr};
 
 protected:
 	size_t size;
@@ -54,8 +52,8 @@ public:
 
 	
 //MARK:- Methods
-	void clear();
-	bool isEmpty();
+	void inline clear();
+	bool inline isEmpty();
 	size_t getSize();
 	Set<T> initSet(T &data);
 	
@@ -67,7 +65,8 @@ public:
 	
 	Set<T> &operator+=(const T &data);
 	Set<T> &append(const T data);
-	Set<T> &addSet(const Set &SetToAdd);
+	Set<T> &operator+=(const Set<T> &setToAdd);
+	Set<T> &addSet(const Set<T> &SetToAdd);
 	
 	Set<T> &operator-=(const T &data);
 	
@@ -77,8 +76,13 @@ public:
 	SetIterator<T> begin();
 	SetIterator<T> end();
 	
-	SetIterator<T> c_begin();
-	SetIterator<T> c_end();
+	ConstSetIterator<T> begin() const;
+	ConstSetIterator<T> end() const;
+private:
+std::shared_ptr<SetItem<T> > ptr {nullptr};
+
+	ConstSetIterator<T> c_begin() const;
+	ConstSetIterator<T> c_end() const;
 	
 	void allocMemory(size_t size);
 };

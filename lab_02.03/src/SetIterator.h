@@ -29,6 +29,7 @@ public:
     virtual ~SetIteratorBase() = default;
 
     SetIteratorBase<T> &operator=(const SetIteratorBase<T> &listIter);
+	
     SetIteratorBase<T> &operator++();
     SetIteratorBase<T> operator++(int);
 

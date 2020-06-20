@@ -4,23 +4,28 @@
 
 #include "SetIterator.h"
 
+//MARK: - SetIteratorBase
 template<typename T>
-SetIterator<T> &SetIterator<T>::first() {
-	
-//	return
-}
-
-template<typename T>
-SetIterator<T> &SetIterator<T>::last() {
-	
-}
-
-template<typename T>
-SetIterator<T> &SetIterator<T>::next() {
+SetIteratorBase<T> &SetIteratorBase<T>::next() {
 	return Set
 }
 
+//MARK: - SetIterator
 template<typename T>
-void SetIterator<T>::inRange() {
 
-}
+template<typename T>
+
+template<typename T>
+
+template<typename T>
+
+template<typename T>
+
+template<typename T>
+
+template<typename T>
+
+template<typename T>
+
+
+//MARK: - ConstSetIteratorBase

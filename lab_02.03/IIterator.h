@@ -11,8 +11,7 @@ template<typename T>
 class IIterator {
 
 public:
-	virtual SetIterator<T> &next()		= 0;
-//	virtual SetIterator<T> &inRange()	= 0;
+	virtual SetIterator<T> &next() = 0;
 
 protected:
 	T current;

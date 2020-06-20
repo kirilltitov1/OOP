@@ -30,12 +30,17 @@ T &SetItem<T>::getPtrData() const {
 }
 
 template<typename T>
-bool SetItem<T>::operator<(const SetItem<T> &elem) const {
-	return false;
+bool inline SetItem<T>::isEqual(const SetItem<T> &elem) const {
+	return (this->data == elem.data) ?  true : false;
 }
 
 template<typename T>
 bool SetItem<T>::operator==(const SetItem<T> &elem) const {
+	return isEqual(elem);
+}
+
+template<typename T>
+bool SetItem<T>::operator!=(const SetItem<T> &elem) const {
 	return false;
 }
 
@@ -50,14 +55,15 @@ bool SetItem<T>::operator<=(const SetItem<T> &elem) const {
 }
 
 template<typename T>
-bool SetItem<T>::operator!=(const SetItem<T> &elem) const {
+bool SetItem<T>::operator>(const SetItem<T> &elem) const {
 	return false;
 }
 
 template<typename T>
-bool SetItem<T>::operator>(const SetItem<T> &elem) const {
+bool SetItem<T>::operator<(const SetItem<T> &elem) const {
 	return false;
 }
+
 
 template<typename T>
 SetItem<T> &SetItem<T>::next() {

@@ -34,10 +34,11 @@ public:
 	
 	SetItem<T> &next();
 
+	bool inline isEqual(const SetItem<T>& elem) const;
 	bool operator ==(const SetItem<T>& elem) const;
+	bool operator !=(const SetItem<T>& elem) const;
 	bool operator >=(const SetItem<T>& elem) const;
 	bool operator <=(const SetItem<T>& elem) const;
-	bool operator !=(const SetItem<T>& elem) const;
 	bool operator  >(const SetItem<T>& elem) const;
 	bool operator  <(const SetItem<T>& elem) const;
 //	std::iostream& operator<<(std::ostream& os, const SetItem<T> &item);
