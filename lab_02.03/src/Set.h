@@ -79,8 +79,8 @@ public:
 	SetIterator<T> begin();
 	SetIterator<T> end();
 	
-	ConstSetIterator<T> begin() const;
-	ConstSetIterator<T> end() const;
+	ConstSetIterator<T> cbegin() const;
+	ConstSetIterator<T> cend() const;
 };
 
 #endif /* Container_hpp */

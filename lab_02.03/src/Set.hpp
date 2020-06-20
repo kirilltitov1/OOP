@@ -89,12 +89,12 @@ SetIterator<T> Set<T>::end() {
 }
 
 template<typename T>//+
-ConstSetIterator<T> Set<T>::begin() const {
+ConstSetIterator<T> Set<T>::cbegin() const {
 	return SetIterator<T>(0);
 }
 
 template<typename T>//+
-ConstSetIterator<T> Set<T>::end() const {
+ConstSetIterator<T> Set<T>::cend() const {
 	return SetIterator<T>(getSize());
 }
 
