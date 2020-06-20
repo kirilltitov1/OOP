@@ -18,8 +18,10 @@ Set<T>::Set(): size(0) {
 template<typename T>//+
 Set<T>::Set(const T* notUnicueArray, size_t count) {
 	allocMemory(count);
+	this->size = 0;
 	for (const auto *item = notUnicueArray; item < notUnicueArray + count; item++) {
 		this->append(*item);
+		this->size++;
 	}
 }
 
@@ -34,7 +36,7 @@ template<typename Iterator>
 Set<T>::Set(Iterator begin, Iterator end) {
 	for (auto item = begin; end != item; ++item)
     {
-        this->append(*item);
+        this->append(item);
     }
 }
 
@@ -75,7 +77,7 @@ bool inline Set<T>::isEmpty() {
 
 template<typename T>//+
 size_t Set<T>::getSize() {
-	return ptr.use_count();
+	return this->size;
 }
 
 template<typename T>//+
@@ -89,12 +91,12 @@ SetIterator<T> Set<T>::end() {
 }
 
 template<typename T>//+
-ConstSetIterator<T> Set<T>::cbegin() const {
+ConstSetIterator<T> Set<T>::c_begin() const {
 	return SetIterator<T>(0);
 }
 
 template<typename T>//+
-ConstSetIterator<T> Set<T>::cend() const {
+ConstSetIterator<T> Set<T>::c_end() const {
 	return SetIterator<T>(getSize());
 }
 
@@ -120,13 +122,17 @@ Set<T> &Set<T>::operator+=(const T &elem) {
 }
 
 template<typename T>//+
+Set<T> &Set<T>::operator+=(const Set<T> &setToAdd) {
+	return this->addSet(setToAdd);
+}
+
+template<typename T>//+
 Set<T> &Set<T>::append(const T elem) {
-	size_t size = this->ptr.use_count();
-	std::shared_ptr<SetItem<T>> newPtr(new SetItem<T>[ptr.use_count()+1], std::default_delete<SetItem<T>[]>());
-	for (int i = 0; i < ptr.use_count(); i++) {
+	std::shared_ptr<SetItem<T>> newPtr(new SetItem<T>[size+1], std::default_delete<SetItem<T>[]>());
+	for (int i = 0; i < size; i++) {
 		newPtr.get()[i] = ptr.get()[i];
 	}
-	newPtr.get()[size-1] = SetItem<T>(elem);
+	newPtr.get()[size] = SetItem<T>(elem);
 	this->ptr = newPtr;
 	return *this;
 }
@@ -143,11 +149,11 @@ Set<T> Set<T>::operator+(const T &elem) const {
 	return *this->add(elem);
 }
 
-template<typename T>//+
-Set<T> &Set<T>::addSet(const Set &SetToAdd) {
-	for (const auto item: SetToAdd) {
-		if (isUnique(item)) {
-			this->append(item.elem);
+template<typename T>
+Set<T> &Set<T>::addSet(const Set<T> &setToAdd) {
+	for (size_t i = 0; i < size; i++) {
+		if (isUnique(ptr.get()[i])) {
+			append(ptr.get()[i].getData());
 		}
 	}
 	return *this;
@@ -163,7 +169,7 @@ Set<T> &Set<T>::remove(const T &elem) const {
 			pos = 0;
 		}
 	}
-	size_t size = this->ptr.use_count();
+	size_t size = this->size;
 	std::shared_ptr<SetItem<T>> newPtr(new SetItem<T>[size-1], std::default_delete<SetItem<T>[]>());
 	for (size_t i = 0; i < size; i++) {
 		if (i != pos) {
@@ -188,9 +194,9 @@ Set<T> Set<T>::initSet(T &elem) {
 
 template<typename T>//+
 template<typename T_>
-bool Set<T>::isUnique(SetItem<T_> item) {
-	for (const auto item : this->ptr.get()) {
-		if (item == item) {
+bool Set<T>::isUnique(SetItem<T_> setItem) {
+	for (size_t i = 0; i < size; i++) {
+		if (ptr.get()[i] == setItem) {
 			return false;
 		}
 	}

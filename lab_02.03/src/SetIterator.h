@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "IIterator.h"
+#include "errors.h"
 //#include "SetItem.h"
 
 
@@ -17,14 +18,14 @@ template<typename T> class Set;
 
 //MARK: - SetIteratorBase
 template<typename T>
-class SetIteratorBase: public IIterator<T>, public std::iterator<std::input_iterator_tag, T> {
-private:
-	std::shared_ptr<SetItem<T>> curPtr;
+class SetIteratorBase: public std::iterator<std::input_iterator_tag, T> {
+protected:
+	size_t curIndex;
 	
 public:
 	SetIteratorBase();
     SetIteratorBase(const SetIteratorBase<T> &setIterator);
-    SetIteratorBase(const std::shared_ptr<SetItem<T>> item);
+//    SetIteratorBase(const std::shared_ptr<SetItem<T>> item);
 
     virtual ~SetIteratorBase() = default;
 
@@ -46,12 +47,11 @@ class SetIterator: public SetIteratorBase<T> {
 public:
 	SetIterator();
 	SetIterator(const SetIterator<T> &setIterator);
-	SetIterator(const std::shared_ptr<SetItem<T>> item);
+//	SetIterator(const std::shared_ptr<SetItem<T>> item);
 
 	SetIterator<T> &operator=(const SetIterator<T> &setIterator);
 
-	T &next();
-	const T &next() const;
+	SetIterator<T> &next();
 
 	T &operator*();
 	T *operator->();
@@ -68,12 +68,11 @@ class ConstSetIterator: public SetIteratorBase<T> {
 public:
 	ConstSetIterator();
 	ConstSetIterator(const ConstSetIterator<T> &setIteratoc);
-	ConstSetIterator(std::shared_ptr<SetItem<T>> item);
+//	ConstSetIterator(std::shared_ptr<SetItem<T>> item);
 
 	ConstSetIterator<T> &operator=(const ConstSetIterator<T> &setIterator);
 
-	T &next();
-	const T &next() const;
+	ConstSetIterator<T> &next();
 
 	const T &operator*() const;
 	const T *operator->() const;

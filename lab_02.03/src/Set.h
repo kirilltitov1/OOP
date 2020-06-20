@@ -38,7 +38,8 @@ public:
 	//	Set(size );
 	Set(const T *notUnicueArray, size_t count);	// конструктор с переменными
 	
-	Set(std::shared_ptr<SetItem<T>> &newPtr);
+//	template<typename T_>
+//	Set(std::shared_ptr<SetItem<T_>> &newPtr);
 	
 	Set(const Set<T> &set);					// конструктор копирования
 	
@@ -79,8 +80,10 @@ public:
 	SetIterator<T> begin();
 	SetIterator<T> end();
 	
-	ConstSetIterator<T> cbegin() const;
-	ConstSetIterator<T> cend() const;
+	ConstSetIterator<T> begin() const;
+	ConstSetIterator<T> end() const;
+	ConstSetIterator<T> c_begin() const;
+	ConstSetIterator<T> c_end() const;
 };
 
 #endif /* Container_hpp */

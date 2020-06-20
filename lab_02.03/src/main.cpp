@@ -23,11 +23,15 @@ int main(int argc, const char * argv[]) {
 
 	try {
 		std::cout << "🔘 Конструктор по умолчанию 🔘\n";
-		Set<double> set1;
-		std::cout << "🔘 Конструктор с параметрами 🔘\n";
 		int array[] = {1, 2, 3};
+		int array2[]= {4, 5, 6};
+		Set<int> set1(array, 3);
+		std::cout << "🔘 Конструктор с параметрами 🔘\n";
 //		array
-		Set<int> set2(array, 3);
+		Set<int> set2(array2, 3);
+		
+		set1.addSet(set2);
+		set1 += set2;
 	
 	} catch (MemError &error) {
 		errorFlag = true;

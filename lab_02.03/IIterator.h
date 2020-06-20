@@ -7,14 +7,14 @@
 
 #include <iterator>
 
-template<typename T>
-class IIterator {
-
-public:
-	virtual SetIterator<T> &next() = 0;
-
-protected:
-	T current;
-};
+//template<typename T>
+//class IIterator {
+//
+//public:
+//	virtual SetIteratorBase<T> &next() = 0;
+//
+//protected:
+//	T current;
+//};
 
 #endif //LAB_2_3_2_IITERATOR_HPP
