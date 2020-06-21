@@ -24,7 +24,7 @@ template<typename T> class SetIterator;
 template <typename T>
 class Set: public IContainer {
 private:
-	std::shared_ptr<SetItem<T> > ptr {nullptr};
+	std::shared_ptr<SetItem<T>> ptr {nullptr};
 	
 	void allocMemory(size_t size);
 
@@ -40,50 +40,45 @@ public:
 	
 //	template<typename T_>
 //	Set(std::shared_ptr<SetItem<T_>> &newPtr);
+
+	explicit Set(const Set<T> &set);					// конструктор копирования
 	
-	Set(const Set<T> &set);					// конструктор копирования
-	
-	Set(const Set<T> &&set) noexcept;		// конструктор перемещения
+	Set(Set<T> &&set) noexcept;		// конструктор перемещения
 	
 	template<typename Iterator>
 	Set(Iterator begin, Iterator end);
 	
-	template<typename T_>
-	Set(std::initializer_list<std::initializer_list<T_>>);	// конструктор со списком инициализации
+	Set(std::initializer_list<T> );	// конструктор со списком инициализации
 
 //MARK:- Destructor
-	virtual ~Set();
+	virtual ~Set() ;
 
 	
 //MARK:- Methods
 	void inline clear();
 	bool inline isEmpty();
 	size_t getSize();
-	Set<T> initSet(T &elem);
+//	Set<T> initSet(T &elem);
 	
-	Set<T> operator+(const T &elem) const;
-	Set<T> &add(const T &elem) const;
-	
+	Set<T> &operator-=(const T &elem);
 	Set<T> operator-(const T &elem) const;
 	Set<T> &remove(const T &elem) const;
 	
+	Set<T> operator+(const T &elem) const;
+	Set<T> &add(const T &elem) const;
 	Set<T> &operator+=(const T &elem);
 	Set<T> &append(const T elem);
 	Set<T> &operator+=(const Set<T> &setToAdd);
 	Set<T> &addSet(const Set<T> &SetToAdd);
 	
-	Set<T> &operator-=(const T &elem);
+	Set<T> &operator=(const Set<T> &set);
+	Set<T> &operator=(const Set<T> &&set) noexcept;
 	
 	template<typename T_>
 	bool isUnique(SetItem<T_>);
 	
-	SetIterator<T> begin();
-	SetIterator<T> end();
-	
 	ConstSetIterator<T> begin() const;
 	ConstSetIterator<T> end() const;
-	ConstSetIterator<T> c_begin() const;
-	ConstSetIterator<T> c_end() const;
 };
 
 #endif /* Container_hpp */

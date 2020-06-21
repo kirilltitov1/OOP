@@ -14,7 +14,6 @@ template<typename T>//+
 Set<T>::Set(): size(0) {
 	std::cout << "Конструктор по умолчанию класса Set\n" ;
 }
-
 template<typename T>//+
 Set<T>::Set(const T* notUnicueArray, size_t count) {
 	allocMemory(count);
@@ -24,13 +23,23 @@ Set<T>::Set(const T* notUnicueArray, size_t count) {
 		this->size++;
 	}
 }
-
 template<typename T>//+
 Set<T>::Set(const Set<T> &set) {
-	this->addSet(set);
+	if (!set) {
+		this->addSet(set);
+	}
 	std::cout << "Конструктор копирования класса Set\n" ;
 }
-
+template<typename T>//+
+Set<T>::Set(Set<T> &&set) noexcept {
+	if (!set) {
+		this->size = set->size;
+		this->ptr.reset(set);
+		
+		set->size = 0;
+		set->ptr = nullptr;
+	}
+}
 template <typename T>//+
 template<typename Iterator>
 Set<T>::Set(Iterator begin, Iterator end) {
@@ -40,23 +49,32 @@ Set<T>::Set(Iterator begin, Iterator end) {
     }
 }
 
-template<typename T>//+
-template<typename T_>
-Set<T>::Set(std::initializer_list<std::initializer_list<T_>> array) {
-	for (const auto item: array) {
-		this->append(item);
+
+template <typename T>//+
+Set<T> &Set<T>::operator=(const Set<T> &set) {
+	if (!set) {
+		this->addSet(set);
 	}
-	std::cout << "Конструктор со списком инициализации класса Set\n" ;
+}
+template <typename T>//+
+Set<T> &Set<T>::operator=(const Set<T> &&set) noexcept {
+	if (!set) {
+		this->size = set->size;
+		this->ptr.reset(set);
+		
+		set->size = 0;
+		set->ptr = nullptr;
+	}
 }
 
-template<typename T>//+
-Set<T>::Set(const Set<T> &&set) noexcept {
-	this->size = set->size;
-	this->ptr.reset(set);
-	
-	set->size = 0;
-	set->ptr = nullptr;
-}
+//template<typename T>//+
+//template<typename T_>
+//Set<T>::Set(std::initializer_list<std::initializer_list<T_>> array) {
+//	for (const auto item: array) {
+//		this->append(item);
+//	}
+//	std::cout << "Конструктор со списком инициализации класса Set\n" ;
+//}
 
 //MARK:- Destructor
 template<typename T>//+
@@ -80,23 +98,23 @@ size_t Set<T>::getSize() {
 	return this->size;
 }
 
+//template<typename T>//+
+//SetIterator<T> Set<T>::begin() {
+//	return SetIterator<T>(0);
+//}
+
+//template<typename T>//+
+//SetIterator<T> Set<T>::end() {
+//	return SetIterator<T>(getSize());
+//}
+
 template<typename T>//+
-SetIterator<T> Set<T>::begin() {
+ConstSetIterator<T> Set<T>::begin() const {
 	return SetIterator<T>(0);
 }
 
 template<typename T>//+
-SetIterator<T> Set<T>::end() {
-	return SetIterator<T>(getSize());
-}
-
-template<typename T>//+
-ConstSetIterator<T> Set<T>::c_begin() const {
-	return SetIterator<T>(0);
-}
-
-template<typename T>//+
-ConstSetIterator<T> Set<T>::c_end() const {
+ConstSetIterator<T> Set<T>::end() const {
 	return SetIterator<T>(getSize());
 }
 
@@ -185,12 +203,12 @@ Set<T> Set<T>::operator-(const T &elem) const {
 	return *this->remove(elem);
 }
 
-template<typename T>//+
-Set<T> Set<T>::initSet(T &elem) {
-	Set<T> set;
-	set.add(elem);
-	return *this;
-}
+//template<typename T>//+
+//Set<T> Set<T>::initSet(T &elem) {
+//	Set<T> set;
+//	set.add(elem);
+//	return *this;
+//}
 
 template<typename T>//+
 template<typename T_>

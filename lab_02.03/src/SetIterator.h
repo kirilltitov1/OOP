@@ -11,7 +11,6 @@
 
 #include "IIterator.h"
 #include "errors.h"
-//#include "SetItem.h"
 
 
 template<typename T> class Set;
@@ -21,6 +20,7 @@ template<typename T>
 class SetIteratorBase: public std::iterator<std::input_iterator_tag, T> {
 protected:
 	size_t curIndex;
+	std::weak_ptr<T> curPtr;
 	
 public:
 	SetIteratorBase();
