@@ -84,6 +84,7 @@ bool SetIteratorBase<T>::operator!=(const SetIteratorBase<T> &setIterator) const
 
 template<typename T>
 SetIteratorBase<T> &SetIteratorBase<T>::next() {
+	validate_end();
 	++(this->curIndex);
 	return *this;
 }
@@ -94,6 +95,7 @@ SetIteratorBase<T> &SetIteratorBase<T>::next() {
 //}
 template<typename T>
 ConstSetIterator<T> &ConstSetIterator<T>::next() {
+	this->validate_end();
 	++(this->curIndex);
 	return *this;
 }
