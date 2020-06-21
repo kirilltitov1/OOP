@@ -164,7 +164,7 @@ ConstSetIterator<T>::operator bool() const {
 
 template<typename T>
 void SetIteratorBase<T>::validate_end() {
-	if (this->curIndex > this->size) {
+	if (this->curIndex >= this->size) {
 		throw RangeError();
 	}
 }
