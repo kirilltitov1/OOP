@@ -20,7 +20,8 @@ template<typename T>
 class SetIteratorBase: public std::iterator<std::input_iterator_tag, T> {
 protected:
 	size_t curIndex;
-	std::weak_ptr<T> curPtr;
+	size_t size;
+	std::weak_ptr<T> data;
 	
 public:
 	SetIteratorBase();
@@ -38,6 +39,8 @@ public:
     bool operator!=(const SetIteratorBase<T> &setIterator) const;
 
 	SetIteratorBase<T> &next();
+	
+	void validate_end();
 };
 
 //MARK: - SetIterator

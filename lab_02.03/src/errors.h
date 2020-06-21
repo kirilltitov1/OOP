@@ -46,6 +46,11 @@ public:
     }
 };
 
-
+class IteratorError: public BaseError {
+public:
+	const char* what() const noexcept override {
+		return "Iterator error";
+	}
+};
 
 #endif /* errors_h */

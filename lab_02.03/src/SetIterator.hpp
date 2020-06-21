@@ -7,8 +7,8 @@
 //MARK: - SetIteratorBase
 template<typename T>
 SetIteratorBase<T>::SetIteratorBase() {}
-template<typename T>
-SetIterator<T>::SetIterator() {}
+//template<typename T>
+//SetIterator<T>::SetIterator() {}
 template<typename T>
 ConstSetIterator<T>::ConstSetIterator() {}
 
@@ -16,14 +16,16 @@ ConstSetIterator<T>::ConstSetIterator() {}
 template<typename T>
 SetIteratorBase<T>::SetIteratorBase(const SetIteratorBase<T> &setIterator) {
 	this->curIndex = setIterator.curIndex;
+	this->size = setIterator.size;
 }
-template<typename T>
-SetIterator<T>::SetIterator(const SetIterator<T> &setIterator) {
-	this->curIndex = setIterator.curIndex;
-}
+//template<typename T>
+//SetIterator<T>::SetIterator(const SetIterator<T> &setIterator) {
+//	this->curIndex = setIterator.curIndex;
+//}
 template<typename T>
 ConstSetIterator<T>::ConstSetIterator(const ConstSetIterator<T> &setIterator) {
 	this->curIndex = setIterator.curIndex;
+	this->size = setIterator.size;
 }
 
 
@@ -32,20 +34,22 @@ SetIteratorBase<T> &SetIteratorBase<T>::operator=(const SetIteratorBase<T> &setI
     if (this != &setIterator)
     {
 		this->curIndex = setIterator.curIndex;
+		this->size = setIterator.size;
     }
     return *this;
 }
-template<typename T>
-SetIterator<T> &SetIterator<T>::operator=(const SetIterator<T> &setIterator) {
-	if (setIterator) {
-		this->curIndex = setIterator.curIndex;
-	}
-	return *this;
-}
+//template<typename T>
+//SetIterator<T> &SetIterator<T>::operator=(const SetIterator<T> &setIterator) {
+//	if (setIterator) {
+//		this->curIndex = setIterator.curIndex;
+//	}
+//	return *this;
+//}
 template<typename T>
 ConstSetIterator<T> &ConstSetIterator<T>::operator=(const ConstSetIterator<T> &setIterator) {
 	if (setIterator) {
 		this->curIndex = setIterator.curIndex;
+		this->size = setIterator.size;
 	}
 	return *this;
 }
@@ -53,12 +57,14 @@ ConstSetIterator<T> &ConstSetIterator<T>::operator=(const ConstSetIterator<T> &s
 
 template<typename T>
 SetIteratorBase<T> &SetIteratorBase<T>::operator++() {
+	validate_end();
 	this->next();
 	return *this;
 }
 
 template<typename T>
 SetIteratorBase<T> SetIteratorBase<T>::operator++(int) {
+	validate_end();
 	SetIteratorBase<T> iterator(*this);
 	this->operator++();
 	return iterator;
@@ -81,12 +87,11 @@ SetIteratorBase<T> &SetIteratorBase<T>::next() {
 	++(this->curIndex);
 	return *this;
 }
-
-template<typename T>
-SetIterator<T> &SetIterator<T>::next() {
-	++(this->curIndex);
-	return *this;
-}
+//template<typename T>
+//SetIterator<T> &SetIterator<T>::next() {
+//	++(this->curIndex);
+//	return *this;
+//}
 template<typename T>
 ConstSetIterator<T> &ConstSetIterator<T>::next() {
 	++(this->curIndex);
@@ -96,61 +101,68 @@ ConstSetIterator<T> &ConstSetIterator<T>::next() {
 
 template<typename T>
 T &SetIterator<T>::operator*() {
-    if (this->curPtr.expired())
+    if (this->data.expired())
     {
-        throw MemError();
+        throw IteratorError();
     }
-    return this->curPtr.lock()->getPtrData();
+    return this->data.lock()[this->curIndex];
 }
-template<typename T>
-const T &SetIterator<T>::operator*() const {
-	if (this->curPtr.expired())
-    {
-        throw MemError();
-    }
-    return this->curPtr.lock()->getPtrData();
-}
+//template<typename T>
+//const T &SetIterator<T>::operator*() const {
+//	if (this->curPtr.expired())
+//    {
+//        throw MemError();
+//    }
+//    return this->curPtr.lock()->getPtrData();
+//}
 template<typename T>
 const T &ConstSetIterator<T>::operator*() const {
-	if (this->curPtr.expired())
+	if (this->data.expired())
     {
-        throw MemError();
+        throw IteratorError();
     }
-    return this->curPtr.lock()->getPtrData();
+    return this->data.lock()[this->curIndex];
 }
 
 
 template<typename T>
 T *SetIterator<T>::operator->() {
-	if (this->curPtr.expired())
+	if (this->data.expired())
     {
-        throw MemError();
+        throw IteratorError();
     }
-    return &this->ptrCur.lock()->getPtrData();
+    return &this->data.lock()[this->curIndex];
 }
-template<typename T>
-const T *SetIterator<T>::operator->() const {
-	if (this->curPtr.expired())
-    {
-        throw MemError();
-    }
-    return &this->ptrCur.lock()->getPtrData();
-}
+//template<typename T>
+//const T *SetIterator<T>::operator->() const {
+//	if (this->curPtr.expired())
+//    {
+//        throw MemError();
+//    }
+//    return &this->ptrCur.lock()->getPtrData();
+//}
 template<typename T>
 const T *ConstSetIterator<T>::operator->() const {
-	if (this->curPtr.expired())
+	if (this->data.expired())
     {
-        throw MemError();
+        throw IteratorError();
     }
-    return &this->ptrCur.lock()->getPtrData();
+    return &this->data.lock()[this->curIndex];
 }
 
 
-template<typename T>
-SetIterator<T>::operator bool() const {
-	return &this->curPtr.expired();
-}
+//template<typename T>
+//SetIterator<T>::operator bool() const {
+//	return &this->curPtr.expired();
+//}
 template<typename T>
 ConstSetIterator<T>::operator bool() const {
 	return &this->curPtr.expired();
+}
+
+template<typename T>
+void SetIteratorBase<T>::validate_end() {
+	if (this->curIndex > this->size) {
+		throw RangeError();
+	}
 }
