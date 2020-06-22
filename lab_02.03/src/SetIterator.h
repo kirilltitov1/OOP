@@ -21,7 +21,7 @@ class SetIteratorBase: public std::iterator<std::input_iterator_tag, T> {
 protected:
 	size_t curIndex;
 	size_t size;
-	std::weak_ptr<T> data;
+	std::weak_ptr<SetItem<T>> data;
 	
 public:
 	SetIteratorBase();
@@ -56,8 +56,6 @@ public:
 
 	SetIterator<T> &next();
 
-	T &operator*();
-	T *operator->();
 	const T &operator*() const;
 	const T *operator->() const;
 

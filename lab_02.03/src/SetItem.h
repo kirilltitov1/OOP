@@ -30,7 +30,7 @@ public:
 
 	//MARK:- Methods
 	T getData() const;
-	T &getPtrData() const;
+	T &getPtrData();
 	
 	void setData(T data);
 

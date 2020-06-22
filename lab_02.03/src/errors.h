@@ -10,47 +10,85 @@
 #define errors_h
 
 #include <exception>
+#include <string>
 
-class BaseError : public std::exception {
+class BaseSetError: public std::exception {
 public:
-    const char* what() const noexcept override {
-        return "Some error was catched";
+    BaseSetError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Error")
+    {
+        err_info = "\nFile name: " + _filename +
+				"\nClass: " + _name +
+                "\nLine #: " + std::to_string(_line) +
+				"Info: " + _info;
+    }
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
+    }
+protected:
+    std::string err_info;
+};
+
+class MemError: public BaseSetError {
+public:
+    MemError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Allocation error"):
+    BaseSetError(_filename, _name, _line, _info) {};
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
     }
 };
 
-class MemError : public BaseError {
+class RangeError : public BaseSetError {
 public:
-    const char* what() const noexcept override {
-        return "A memory allocation error";
+    RangeError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Indext out of range"):
+    BaseSetError(_filename, _name, _line, _info) {};
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
     }
 };
 
-class RangeError : public BaseError {
+class CmpError : public BaseSetError {
 public:
-    const char* what() const noexcept override {
-        return "List is out of range";
+    CmpError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Compare error"):
+    BaseSetError(_filename, _name, _line, _info) {};
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
     }
 };
 
-class CmpError : public BaseError {
+class EmptyError : public BaseSetError {
 public:
-    const char* what() const noexcept override {
-        return "Comparing iterators with different sources";
+    EmptyError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Empty error"):
+    BaseSetError(_filename, _name, _line, _info) {};
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
     }
 };
 
-class EmptyError : public BaseError {
+class IteratorError: public BaseSetError {
 public:
-    const char* what()  const noexcept override {
-        return "Attempt to work with empty list or empty element";
+	IteratorError(std::string _filename, std::string _name,
+                    size_t _line,
+                    std::string _info = "Itterator error"):
+    BaseSetError(_filename, _name, _line, _info) {};
+    virtual const char* what() const noexcept
+    {
+        return err_info.c_str();
     }
-};
-
-class IteratorError: public BaseError {
-public:
-	const char* what() const noexcept override {
-		return "Iterator error";
-	}
 };
 
 #endif /* errors_h */

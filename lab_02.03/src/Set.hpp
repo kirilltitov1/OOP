@@ -57,7 +57,7 @@ Set<T> &Set<T>::operator=(const Set<T> &set) {
 	}
 }
 template <typename T>//+
-Set<T> &Set<T>::operator=(const Set<T> &&set) noexcept {
+Set<T> &Set<T>::operator=(Set<T> &&set) {
 	if (!set) {
 		this->size = set->size;
 		this->ptr.reset(set);
@@ -67,14 +67,13 @@ Set<T> &Set<T>::operator=(const Set<T> &&set) noexcept {
 	}
 }
 
-//template<typename T>//+
-//template<typename T_>
-//Set<T>::Set(std::initializer_list<std::initializer_list<T_>> array) {
-//	for (const auto item: array) {
-//		this->append(item);
-//	}
-//	std::cout << "Конструктор со списком инициализации класса Set\n" ;
-//}
+template<typename T>//+
+Set<T>::Set(std::initializer_list<T> array) {
+	for (const auto item: array) {
+		this->append(item);
+	}
+	std::cout << "Конструктор со списком инициализации класса Set\n" ;
+}
 
 //MARK:- Destructor
 template<typename T>//+
@@ -98,16 +97,6 @@ size_t Set<T>::getSize() {
 	return this->size;
 }
 
-//template<typename T>//+
-//SetIterator<T> Set<T>::begin() {
-//	return SetIterator<T>(0);
-//}
-
-//template<typename T>//+
-//SetIterator<T> Set<T>::end() {
-//	return SetIterator<T>(getSize());
-//}
-
 template<typename T>//+
 ConstSetIterator<T> Set<T>::begin() const {
 	return SetIterator<T>(0);
@@ -122,27 +111,163 @@ template<typename T>//+
 void Set<T>::allocMemory(size_t size) {
 	
 	if (size < 0) {
-		throw MemError();
+		throw MemError(__FILE__, typeid(*this).name(), __LINE__);
 	}
 	
 	std::shared_ptr<SetItem<T>> _ptr(new SetItem<T>[size], std::default_delete<SetItem<T>[]>());
 	
 	if (!_ptr) {
-		throw MemError();
+		throw MemError(__FILE__, typeid(*this).name(), __LINE__);
 	}
 	this->ptr = _ptr;
 	return;
 }
 
+
+template<typename T>
+Set<T>& Set<T>::unite(const Set<T>& setToAdd) {
+	addSet(setToAdd);
+}
 template<typename T>//+
 Set<T> &Set<T>::operator+=(const T &elem) {
 	return *this->add(elem);
 }
-
+template<typename T>//+
+Set<T> Set<T>::operator+(const T &elem) const {
+	return *this->add(elem);
+}
 template<typename T>//+
 Set<T> &Set<T>::operator+=(const Set<T> &setToAdd) {
 	return this->addSet(setToAdd);
 }
+template<typename T>//+
+Set<T> Set<T>::operator+(const Set<T>& set) const {
+	Set<T> res = Set<T>(*this);
+    res.unite(set);
+    return res;
+}
+
+
+template<typename T>
+Set<T>& Set<T>::difference(const Set<T>& set) {
+		for (ConstSetIterator<T> iterator(set); iterator != set.end(); iterator++)
+			remove(*iterator);
+		return *this;
+}
+template<typename T>
+Set<T>& Set<T>::operator-=(const Set<T>& set) {
+	return difference(set);
+}
+template<typename T>
+Set<T>& Set<T>::operator-=(const T& elem) {
+	return this->remove(elem);
+}
+template<typename T>
+Set<T> Set<T>::operator-(const Set<T>& set) const {
+	Set<T> newSet = Set<T>(*this);
+	newSet.difference(set);
+	return newSet;
+}
+template<typename T>
+Set<T> Set<T>::operator-(const T& elem) const {
+	return *this->remove(elem);
+}
+
+
+template<typename T>
+Set<T>& Set<T>::intersect(const Set<T>& set) {
+	for (ConstSetIterator<T> iterator(set); iterator != set.end(); iterator++)
+		if(isUnique(*iterator)) {
+			remove(*iterator);
+		}
+	return *this;
+}
+template<typename T>
+Set<T>& Set<T>::operator&=(const Set<T>& set) {
+	this->intersect(set);
+    return *this;
+}
+template<typename T>
+Set<T> Set<T>::operator&(const Set<T>& set) const {
+	Set<T> newSet = Set<T>(*this);
+    newSet.intersect(set);
+    return newSet;
+}
+
+
+template<typename T>
+Set<T>& Set<T>::symmetricDifference(const Set<T>& set) {
+	*this = (*this / set) + (set / *this);
+    return *this;
+}
+template<typename T>
+Set<T> Set<T>::operator^(const Set<T>& set) const {
+	Set<T> newSet = Set<T>(*this);
+    newSet.symmetric_difference(set);
+    return newSet;
+}
+template<typename T>
+Set<T>& Set<T>::operator^=(const Set<T>& set) {
+	return symmetric_difference(set);
+}
+
+
+template<typename T>
+bool Set<T>::isSubset(const Set<T>& set) const {
+	for (ConstSetIterator<T> iterator(set); iterator != set.end(); iterator++) {
+		if (isUnique(*iterator)) {
+			return false;
+		}
+	}
+	return true;
+}
+template<typename T>
+bool Set<T>::operator>=(const Set<T>& set) const {
+	return isSubset(set);
+}
+
+template<typename T>
+bool Set<T>::isStrictSubset(const Set<T>& set) const {
+	return isSubset(set) && !set.isSubset(*this);
+}
+template<typename T>
+bool Set<T>::operator>(const Set<T>& set) const {
+	return isStrictSubset(set);
+}
+
+template<typename T>
+bool Set<T>::isSuperset(const Set<T>& set) const {
+	return set.isSubset(*this);
+}
+template<typename T>
+bool Set<T>::operator<=(const Set<T>& set) const {
+	return isSuperset(set);
+}
+
+template<typename T>
+bool Set<T>::isStrictSuperset(const Set<T>& set) const {
+	return set.isStrictSubset(*this);
+}
+template<typename T>
+bool Set<T>::operator<(const Set<T>& set) const {
+	return isStrictSuperset(set);
+}
+
+
+template <typename T>
+std::ostream& operator <<(std::ostream& os, const Set<T>& set) {
+    os << std::string("{ ");
+    for (ConstSetIterator<T> iterator(set); iterator != set.end(); iterator++)
+    {
+        os << *iterator;
+        if (iterator != set.end())
+            os << std::string(" ");
+    }
+    os << std::string("}");
+
+    return os;
+}
+
 
 template<typename T>//+
 Set<T> &Set<T>::append(const T elem) {
@@ -162,15 +287,10 @@ Set<T> &Set<T>::add(const T &elem) const {
     return newSet;
 }
 
-template<typename T>//+
-Set<T> Set<T>::operator+(const T &elem) const {
-	return *this->add(elem);
-}
-
 template<typename T>
 Set<T> &Set<T>::addSet(const Set<T> &setToAdd) {
 	for (size_t i = 0; i < size; i++) {
-		if (isUnique(ptr.get()[i])) {
+		if (isUnique(ptr.get()[i].getPtrData())) {
 			append(ptr.get()[i].getData());
 		}
 	}
@@ -198,10 +318,10 @@ Set<T> &Set<T>::remove(const T &elem) const {
 	return *this;
 }
 
-template<typename T>//+
-Set<T> Set<T>::operator-(const T &elem) const {
-	return *this->remove(elem);
-}
+//template<typename T>//+
+//Set<T> Set<T>::operator-(const T &elem) const {
+//	return *this->remove(elem);
+//}
 
 //template<typename T>//+
 //Set<T> Set<T>::initSet(T &elem) {
@@ -211,11 +331,11 @@ Set<T> Set<T>::operator-(const T &elem) const {
 //}
 
 template<typename T>//+
-template<typename T_>
-bool Set<T>::isUnique(SetItem<T_> setItem) {
+bool Set<T>::isUnique(T &setItem) {
 	for (size_t i = 0; i < size; i++) {
-		if (ptr.get()[i] == setItem) {
+		if (ptr.get()[i].getData() == setItem) {
 			return false;
 		}
 	}
+	return true;
 }

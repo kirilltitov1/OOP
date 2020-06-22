@@ -25,7 +25,7 @@ T SetItem<T>::getData() const {
 }
 
 template<typename T>//+
-T &SetItem<T>::getPtrData() const {
+T &SetItem<T>::getPtrData() {
 	return this->data;
 }
 

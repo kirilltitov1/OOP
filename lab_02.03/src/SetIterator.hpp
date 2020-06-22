@@ -57,14 +57,12 @@ ConstSetIterator<T> &ConstSetIterator<T>::operator=(const ConstSetIterator<T> &s
 
 template<typename T>
 SetIteratorBase<T> &SetIteratorBase<T>::operator++() {
-	validate_end();
 	this->next();
 	return *this;
 }
 
 template<typename T>
 SetIteratorBase<T> SetIteratorBase<T>::operator++(int) {
-	validate_end();
 	SetIteratorBase<T> iterator(*this);
 	this->operator++();
 	return iterator;
@@ -84,8 +82,9 @@ bool SetIteratorBase<T>::operator!=(const SetIteratorBase<T> &setIterator) const
 
 template<typename T>
 SetIteratorBase<T> &SetIteratorBase<T>::next() {
-	validate_end();
-	++(this->curIndex);
+	if (this->curIndex < size) {
+		++(this->curIndex);
+	}
 	return *this;
 }
 //template<typename T>
@@ -102,11 +101,14 @@ ConstSetIterator<T> &ConstSetIterator<T>::next() {
 
 
 template<typename T>
-T &SetIterator<T>::operator*() {
+const T &SetIterator<T>::operator*() const {
     if (this->data.expired())
     {
-        throw IteratorError();
+        throw IteratorError(__FILE__, typeid(*this).name(), __LINE__);
     }
+	if (this->curIndex == this->size) {
+		throw RangeError(__FILE__, typeid(*this).name(), __LINE__);
+	}
     return this->data.lock()[this->curIndex];
 }
 //template<typename T>
@@ -121,18 +123,24 @@ template<typename T>
 const T &ConstSetIterator<T>::operator*() const {
 	if (this->data.expired())
     {
-        throw IteratorError();
+        throw IteratorError(__FILE__, typeid(*this).name(), __LINE__);
     }
+	if (this->curIndex == this->size) {
+		throw RangeError(__FILE__, typeid(*this).name(), __LINE__);
+	}
     return this->data.lock()[this->curIndex];
 }
 
 
 template<typename T>
-T *SetIterator<T>::operator->() {
+const T *SetIterator<T>::operator->() const {
 	if (this->data.expired())
     {
-        throw IteratorError();
+        throw IteratorError(__FILE__, typeid(*this).name(), __LINE__);
     }
+	if (this->curIndex == this->size) {
+		throw RangeError(__FILE__, typeid(*this).name(), __LINE__);
+	}
     return &this->data.lock()[this->curIndex];
 }
 //template<typename T>
@@ -147,8 +155,11 @@ template<typename T>
 const T *ConstSetIterator<T>::operator->() const {
 	if (this->data.expired())
     {
-        throw IteratorError();
+        throw IteratorError(__FILE__, typeid(*this).name(), __LINE__);
     }
+	if (this->curIndex == this->size) {
+		throw RangeError(__FILE__, typeid(*this).name(), __LINE__);
+	}
     return &this->data.lock()[this->curIndex];
 }
 
@@ -162,9 +173,9 @@ ConstSetIterator<T>::operator bool() const {
 	return &this->curPtr.expired();
 }
 
-template<typename T>
-void SetIteratorBase<T>::validate_end() {
-	if (this->curIndex >= this->size) {
-		throw RangeError();
-	}
-}
+//template<typename T>
+//void SetIteratorBase<T>::validate_end() {
+//	if (this->curIndex >= this->size) {
+//		throw RangeError();
+//	}
+//}

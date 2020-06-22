@@ -30,6 +30,12 @@ int main(int argc, const char * argv[]) {
 //		array
 		Set<int> set2(array2, 3);
 		
+//		for (auto item : set1) {
+//			std::cout << item ;
+//		}
+		
+		Set<int> set3 = {1, 2, 3};
+		
 		set1.addSet(set2);
 		set1 += set2;
 	
