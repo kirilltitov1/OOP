@@ -28,12 +28,15 @@ signals:
 
     void FloorVisited(int floor, Direction d);
     void FloorTargetAchieved(int floor, Direction d);
+    void signalFree();
+    void signalBusy(int floor);
 
 public slots:
 
     void slotMoving();
     void slotFree();
     void slotBusy(int floor);
+    void slotEndMove();
 
 private:
 

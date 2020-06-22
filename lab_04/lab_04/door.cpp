@@ -4,29 +4,13 @@
 Door::Door()
 {
     state = CLOSE;
+    timerOpen.setSingleShot(true);
+    timerClose.setSingleShot(true);
+    timerWaitOpen.setSingleShot(true);
     QObject::connect(this, SIGNAL(OpenDoor()), this, SLOT(slotOpening()));
     QObject::connect(&timerOpen, SIGNAL(timeout()), this, SLOT(slotOpen()));
     QObject::connect(&timerClose, SIGNAL(timeout()), this, SLOT(slotClose()));
     QObject::connect(&timerWaitOpen, SIGNAL(timeout()), this, SLOT(slotClosing()));
-}
-
-void Door::slotOpen()
-{
-    if(state == OPENING) {
-        state = OPEN;
-        qDebug() << "doors opened";
-        timerWaitOpen.start(TIME_DOOR_WAIT);
-        emit OpenDoor();
-    }
-}
-
-void Door::slotClose()
-{
-    if(state == CLOSING) {
-        state = CLOSE;
-        qDebug() << "doors closed";
-        emit DoorIsClosed();
-    }
 }
 
 void Door::slotOpening()
@@ -44,6 +28,16 @@ void Door::slotOpening()
         timerOpen.start(TIME_DOOR - t);
     }
 }
+
+void Door::slotOpen()
+{
+    if(state == OPENING) {
+        state = OPEN;
+        qDebug() << "doors opened";
+        timerWaitOpen.start(TIME_DOOR_WAIT);
+    }
+}
+
 void Door::slotClosing()
 {
     if(state == OPEN) {
@@ -52,3 +46,13 @@ void Door::slotClosing()
         timerClose.start(TIME_DOOR);
     }
 }
+
+void Door::slotClose()
+{
+    if(state == CLOSING) {
+        state = CLOSE;
+        qDebug() << "doors closed";
+        emit DoorIsClosed();
+    }
+}
+

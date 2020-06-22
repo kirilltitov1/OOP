@@ -13,6 +13,7 @@ Controller::Controller(QWidget *parent) : QWidget(parent)
         targetArray[i] = false;
         QObject::connect(buttons[i], SIGNAL(floorRequest(int)), this, SLOT(slotAddNewFloor(int)));
     }
+    QObject::connect(this, SIGNAL(SignalOpenDoor()), &door, SLOT(slotOpening()));
 }
 
 Controller::~Controller()
@@ -27,6 +28,7 @@ void Controller::slotChangeCurrentFloor(int floor, Direction d)
 {
     currentFloor = floor;
     direct = d;
+    emit SignalMovieng();
 }
 
 void Controller::slotAchieveFloor(int floor, Direction d)
@@ -47,7 +49,7 @@ void Controller::slotAchieveFloor(int floor, Direction d)
         }
     }
 
-    emit door.OpenDoor();
+    emit SignalOpenDoor();
 }
 
 void Controller::slotAddNewFloor(int floor)

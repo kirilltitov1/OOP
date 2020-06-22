@@ -25,6 +25,8 @@ public:
 signals:
 
     void SendTarget(int floor);// { qDebug() << "he;;p"; }
+    void SignalMovieng();
+    void SignalOpenDoor();
 
 public slots:
 
